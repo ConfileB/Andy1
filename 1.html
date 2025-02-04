@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fica Comigo?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        .question {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border: 2px solid #333;
+            border-radius: 5px;
+            background-color: white;
+            transition: transform 0.1s ease-in-out;
+        }
+
+        #nao {
+            background-color: #ff6666;
+        }
+
+        #sim {
+            background-color: #66ff66;
+        }
+
+        #message {
+            font-size: 28px;
+            color: #66ff66;
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="question">Fica comigo?</div>
+    <div class="button-container">
+        <button id="sim" class="button">Sim</button>
+        <button id="nao" class="button">Não</button>
+    </div>
+
+    <div id="message"></div>
+
+    <script>
+        const naoButton = document.getElementById('nao');
+        const simButton = document.getElementById('sim');
+        const messageDiv = document.getElementById('message');
+
+        naoButton.addEventListener('mouseenter', () => {
+            // Teleportando o botão "não" para uma posição aleatória distante
+            const maxX = window.innerWidth - naoButton.offsetWidth;
+            const maxY = window.innerHeight - naoButton.offsetHeight;
+
+            let randomX = Math.random() * maxX;
+            let randomY = Math.random() * maxY;
+
+            naoButton.style.position = 'absolute';
+            naoButton.style.left = randomX + 'px';
+            naoButton.style.top = randomY + 'px';
+        });
+
+        simButton.addEventListener('click', () => {
+            // Exibir a mensagem
+            messageDiv.textContent = 'Bom msm <3';
+            messageDiv.style.display = 'block';
+
+            // Fechar a página após 3 segundos
+            setTimeout(() => {
+                window.close();
+            }, 3000);
+        });
+    </script>
+
+</body>
+</html>
